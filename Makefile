@@ -12,3 +12,6 @@ build_log:
 
 clean:
 	rm -f $(LIB_NAME) $(PROG_NAME) *.txt *.o
+
+test1:
+	LD_LIBRARY_PATH=. ./$(PROG_NAME) test1.txt LOW
