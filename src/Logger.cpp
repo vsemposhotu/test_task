@@ -8,13 +8,12 @@
 
 int main(int argc, char* argv[]) {
     if (argc < 3) return 1;
-    setlocale(LC_ALL, "");
     Logger logger(argv);
 
     std::queue<std::pair<std::string, std::string>> messageQueue;
     std::mutex queueMutex;
     std::condition_variable queueCV;
-    std::atomic<bool> isRunning = true;
+    std::atomic<bool> isRunning{true};
     
     std::thread worker([&]() {
         while (isRunning) {

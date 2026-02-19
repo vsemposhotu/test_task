@@ -1,4 +1,4 @@
-LIB_NAME = loglib.so
+LIB_NAME = libloglib.so
 PROG_NAME = Logger
 CXX = g++
 
@@ -7,7 +7,7 @@ all: build_lib build_prog
 build_lib:
 	$(CXX) -fPIC -shared src/loglib.cpp -Iinclude -o $(LIB_NAME)
 
-build_log:
+build_prog:
 	$(CXX) src/Logger.cpp -o $(PROG_NAME) -Iinclude -L. -lloglib -lpthread
 
 clean:
@@ -15,3 +15,6 @@ clean:
 
 test1:
 	LD_LIBRARY_PATH=. ./$(PROG_NAME) test1.txt LOW
+
+test2:
+	LD_LIBRARY_PATH=. ./$(PROG_NAME) test2.txt
